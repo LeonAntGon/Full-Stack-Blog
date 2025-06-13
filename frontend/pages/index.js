@@ -9,6 +9,7 @@ import { AiOutlineDeploymentUnit } from "react-icons/ai";
 import { FaGithub } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
+import blogImgFront from "@/public/computer-and-coffee.png"
 
 export default function Home() {
 
@@ -63,8 +64,8 @@ export default function Home() {
       <section className='header_data_section'>
         <div className='container flex flex-sb w-100'>
           <div className='leftheader_info'>
-            <h1>Somos <span>Periferia Digital</span></h1>
-            <h3>Especialistas en automatizar procesos y marketing digital</h3>
+            <h1>Blog Full-Stack moderno <span>optimizado para SEO </span></h1>
+            <h3>Desarrollado con React, Next.js y MongoDB</h3>
             <div className='flex gap-2'>
               <Link href='/contact'><button>Comienza Hoy!</button></Link>
               <Link href='/contact'><button>Sobre nosotros</button></Link>
@@ -74,7 +75,7 @@ export default function Home() {
             <div className='rightheader_img'>
               <div className='image_bg_top'></div>
               <div className='image_bg_top2'></div>
-              {/*Poner una imagen acá que esté alrededor de la pelota */}
+              <img src={`${blogImgFront.src}`} alt="blogging"/>
           </div>
         </div>
       </section>
@@ -105,7 +106,7 @@ export default function Home() {
                   <p>lorem ipsum dolor sit asdf onecasdfado asdoiasbd asdljabsd quiwee sel ia  del sek alsdkan asdjk a dkbj</p>
                     <div className='blogauthor flex gap-1'>
                       <div className='blogaimg'>
-                        {/*<img src="" alt=""/>*/}
+                        {/*<img src={`${blogImgFront}`} alt="blogging"/>*/}
                       </div>
 
                       <div className='flex flex-col flex-left gap-05'>
