@@ -39,11 +39,11 @@ export default function Home() {
     pageNumbers.push(i + 1);
   }
 
-  function extractFirstImageUrl(markdownContent){
-    // check if markdownconetnt is provided and non-empty
-    if(!markdownContent || markdownContent !== 'string'){
-      return null;
-    }
+    function extractFirstImageUrl(markdownContent){
+      // check if markdownconetnt is provided and non-empty
+      if(!markdownContent || typeof markdownContent !== 'string'){
+        return null;
+      }
 
     // regular expression to match image urls in markdown format ![alt text](imageurl)
     const regex = /!\[.*?\]\((.*?)\)/;
