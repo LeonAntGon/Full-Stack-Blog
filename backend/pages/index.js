@@ -13,6 +13,15 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
 import { Bar } from 'react-chartjs-2';
 import Loading from "@/components/Loading";
 
@@ -34,17 +43,7 @@ export default function Home() {
   const [blogsData, setBlogsData] = useState([]);
   const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 
-  // Move ChartJS registration into a useEffect
-  useEffect(() => {
-    ChartJS.register(
-      CategoryScale,
-      LinearScale,    // Make sure LinearScale is registered before BarElement
-      BarElement,
-      Title,
-      Tooltip,
-      Legend
-    );
-  }, []);
+  
 
   // check if there's no active session and redirect to login page
   useEffect(() =>{
@@ -80,17 +79,15 @@ export default function Home() {
   }
 
   useEffect(() => {
-    const fetchData = async () => {
+    (async () => {
       try {
-        const response = await fetch('/api/blogapi');
-        const data = await response.json();
-        console.log(data)
+        const res = await fetch('/api/blogapi');
+        const data = await res.json();
         setBlogsData(data);
-      } catch (error) {
-        console.log('Error fetching data', error);
+      } catch (err) {
+        console.error("Error fetching data", err);
       }
-    };
-    fetchData();
+    })();
   }, []);
 
   // Fix the data processing useEffect
