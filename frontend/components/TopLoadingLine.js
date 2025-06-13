@@ -16,34 +16,30 @@ export default function TopLoadingLine(){
 
         const handleComplete = () => {
             setLoadingProgress(100);
-            setTimeout(() => setLoadingProgress(0), 500);
-        }
-
-        const handleError = () => {
-            setLoadingProgress(100);
-            // Cambiar color a rojo para indicar error
-            setTimeout(() => setLoadingProgress(0), 1000);
+            setTimeout(() => {
+                setLoadingProgress(0)
+            }, 1000)
         }
 
         router.events.on('routeChangeStart', handleStart);
         router.events.on('routeChangeComplete', handleComplete);
-        router.events.on('routeChangeError', handleError);
+        router.events.on('routeChangeError', handleComplete);
 
         return () => {
             router.events.off('routeChangeStart', handleStart);
             router.events.off('routeChangeComplete', handleComplete);
-            router.events.off('routeChangeError', handleError);
+            router.events.off('routeChangeError', handleComplete);
         }
     },[router.events])
 
     return <div className="topLoadingLine" style={{
         width: `${loadingProgress}%`,
         height: '3px',
-        backgroundColor: loadingProgress === 100 ? '#ff0000' : '#0070f3',
+        backgroundColor: '#4CAF50',
         position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 9999,
-        transition: 'width 0.3s ease, background-color 0.3s ease'
-    }} />
+        transition: 'width 0.3s ease'
+    }}></div>
 }
