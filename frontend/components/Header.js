@@ -128,7 +128,16 @@ export default function Header(){
                             return <Link className="blog" key={blog._id} onClick={closeSearch} href={`/blog/${blog.slug}`}>
                                 <div className="bloginfo">
                                     <div><h3>{blog.slug}</h3></div>
-                                    <p>lorem ipsun asdasd ajbdkajsdb adj baskdb  oasdbnasdjb asdashdoj asdjobasdjoasbd asodjbaosjdb  aosd basodjb</p>
+                                    <p>
+                                    {truncateText(
+                                        blog.description
+                                        .replace(/!\[/g, '[')           // elimina el ! si va justo antes de [
+                                        .replace(/\[.*?\]/g, '')        // elimina todo lo que esté entre [ ]
+                                        .replace(/\(.*?\)/g, '')        // elimina todo lo que esté entre ( )
+                                        .replace(/[#_*~`>\\\-]/g, ''),  // elimina caracteres markdown comunes
+                                        140
+                                    )}
+                                    </p>
                                 </div>
                                 
                             </Link>

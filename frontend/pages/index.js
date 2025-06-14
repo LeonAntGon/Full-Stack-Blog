@@ -207,7 +207,7 @@ export default function Home() {
             <div className='letstalk_sec mt-3'>
               <h2>Let's Talk</h2>
               <div className='talk_sec'>
-                <h4>Want to find out how i can solve problems specific to your business? let's talk</h4>
+                <h4>Mis redes</h4>
                 <div className='social_talks flex flex-center gap-1 mt-2'>
                   <div className='st_icon'>
                     <FaGithub/>
