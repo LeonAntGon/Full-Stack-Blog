@@ -72,7 +72,11 @@ export default function Header(){
     const filteredBlogs = searchQuery.trim() === '' ? publishedBlogs : publishedBlogs.filter
     (blog => blog.title.toLowerCase().includes(searchQuery.toLowerCase()));
     
-    
+    function truncateText(text, maxLength = 120) {
+        if (!text || typeof text !== 'string') return '';
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+      }
+      
     return <>
     <header className="header_sec">
         <div className="container header">
