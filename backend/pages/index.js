@@ -151,12 +151,12 @@ export default function Home() {
             <span>{blogsData.filter(ab => ab.status === "publish").length}</span>
           </div>
           <div className="four_card" data-aos="fade-right">
-            <h2>Total Topics</h2>
-            <span>8</span>
+            <h2>Temas totales</h2>
+            <span>4</span>
           </div>
           <div className="four_card" data-aos="fade-left">
-            <h2>Total Tags</h2>
-            <span>6</span>
+            <h2>Etiquetas totales</h2>
+            <span>5</span>
           </div>
           <div className="four_card" data-aos="fade-left">
             <h2>Borradores totales</h2>
