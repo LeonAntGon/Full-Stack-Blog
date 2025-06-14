@@ -10,6 +10,7 @@ import { FaGithub, FaInstagram, FaHtml5 } from 'react-icons/fa';
 import { TbBrandNextjs } from 'react-icons/tb';
 import { FiDatabase } from 'react-icons/fi';
 import { AiOutlineDeploymentUnit } from 'react-icons/ai';
+import blogImgFront from "@/public/computer-and-coffee.png"
 
 export default function blogPage(){
 
@@ -119,7 +120,7 @@ export default function blogPage(){
                             <div className="slug_profile_img">
                                 <div className="image_bg_top0"></div>
                                 <div className="image_bg_top1"></div>
-                                {/* <img src="" alt="coder"/> */}
+                                <img src={`${blogImgFront.src}`} alt="coder"/>
                             </div>
                         </div>
 

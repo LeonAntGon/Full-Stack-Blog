@@ -73,6 +73,11 @@ export default function CategoryPage(){
         return match ? match[1] : null;
     }
 
+    function truncateText(text, maxLength = 120) {
+        if (!text || typeof text !== 'string') return '';
+        return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+      }
+
 
     return <>
       <div className="blogpage">
@@ -83,7 +88,7 @@ export default function CategoryPage(){
                     <h1>{loading ? "Loading..." : tags}</h1>
                         <span>{ loading ? <div>0</div> : currentBlogs.filter(blog => blog.tags).length}</span>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>No se encuentran árticulos sobre este tema.</p>
                 </div>
                 
                 <div className="category_blogs mt-3">
@@ -108,7 +113,16 @@ export default function CategoryPage(){
                             <div className="blogtag">{item.tags[0]}</div>
                         </Link>
                         <Link href={`/blog/${item.slug}`}><h3>{item.title}</h3></Link>
-                        <p>lorem ipsum dolor sit asdf onecasdfado asdoiasbd asdljabsd quiwee sel ia  del sek alsdkan asdjk a dkbj</p>
+                        <p>
+                            {truncateText(
+                                item.description
+                                .replace(/!\[/g, '[')           // elimina el ! si va justo antes de [
+                                .replace(/\[.*?\]/g, '')        // elimina todo lo que esté entre [ ]
+                                .replace(/\(.*?\)/g, '')        // elimina todo lo que esté entre ( )
+                                .replace(/[#_*~`>\\\-]/g, ''),  // elimina caracteres markdown comunes
+                                140
+                            )}
+                        </p>
                             <div className='blogauthor flex gap-1'>
                             <div className='blogaimg'>
                                 {/*<img src="" alt=""/>*/}

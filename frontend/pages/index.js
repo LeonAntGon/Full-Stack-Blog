@@ -51,6 +51,13 @@ export default function Home() {
     return match ? match[1] : null;
     
   }
+
+  function truncateText(text, maxLength = 120) {
+    if (!text || typeof text !== 'string') return '';
+    return text.length > maxLength ? text.slice(0, maxLength) + '...' : text;
+  }
+
+  
   return (
     <>
       <Head>
@@ -75,7 +82,7 @@ export default function Home() {
             <div className='rightheader_img'>
               <div className='image_bg_top'></div>
               <div className='image_bg_top2'></div>
-              <img src={`${blogImgFront.src}`} alt="blogging"/>
+                <img src={`${blogImgFront.src}`} alt="blogging"/>
           </div>
         </div>
       </section>
@@ -103,7 +110,16 @@ export default function Home() {
                     <div className="blogtag">{blog.tags[0]}</div>
                   </Link>
                   <Link href={`/blog/${blog.slug}`}><h3>{blog.title}</h3></Link>
-                  <p>lorem ipsum dolor sit asdf onecasdfado asdoiasbd asdljabsd quiwee sel ia  del sek alsdkan asdjk a dkbj</p>
+                  <p>
+                      {truncateText(
+                        blog.description
+                          .replace(/!\[/g, '[')           // elimina el ! si va justo antes de [
+                          .replace(/\[.*?\]/g, '')        // elimina todo lo que esté entre [ ]
+                          .replace(/\(.*?\)/g, '')        // elimina todo lo que esté entre ( )
+                          .replace(/[#_*~`>\\\-]/g, ''),  // elimina caracteres markdown comunes
+                        140
+                      )}
+                    </p>
                     <div className='blogauthor flex gap-1'>
                       <div className='blogaimg'>
                         {/*<img src={`${blogImgFront}`} alt="blogging"/>*/}
